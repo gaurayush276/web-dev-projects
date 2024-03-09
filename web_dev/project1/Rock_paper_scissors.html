@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container{
+            width: 100%;
+            height: 100vh;
+            background: peachpuff;
+            position: relative;
+
+        }
+        .div svg{
+            width: 6rem;
+            height: 6rem;
+            border: 1px solid black;
+           border-radius: 50%;
+           padding: 1rem;
+           opacity: 0;
+         
+           
+        }
+        .pic , .myPic{
+            width: 6rem;
+            height: 6rem;
+            border: 1px solid black;
+           border-radius: 50%;
+           padding: 1rem;
+  
+        }
+        .active_animation{
+            animation-name: entry;
+           animation-duration: 2s;
+           animation-timing-function: ease-out;
+           animation-iteration-count: 1;
+           
+
+        }
+@keyframes entry {
+    0%{
+        transform: scale(5);
+        opacity: 0;
+
+
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1; 
+
+    }
+}
+        .div{
+            display: flex;
+            margin: 2rem;
+            justify-content: space-around;
+        }
+        #result{
+            width: 100%;
+            height: 4rem;
+            display: flex;
+            justify-content: center;
+            font-size: 3rem;
+            visibility: hidden;
+        }
+ .resultPic {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 5rem;
+ }
+.versus {
+  
+   position: absolute; 
+   width: 100%;
+   background-size: contain;
+   background-repeat: no-repeat;
+            height: 100vh;
+            inset: 0;
+            display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+.versus img{
+    width: 20rem;
+    height: 20rem;
+   
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; font-size: 4rem ; margin-bottom: 2rem;">Rock Paper scissors </h1>
+        <span id="turn" style="display: flex; justify-content: center; font-size: 2rem;"> 
+
+            Your Turn
+        </span>
+
+        <div class="div"> 
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="opt1"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V336c0 1.5 0 3.1 .1 4.6L67.6 283c-16-15.2-41.3-14.6-56.6 1.4s-14.6 41.3 1.4 56.6L124.8 448c43.1 41.1 100.4 64 160 64H304c97.2 0 176-78.8 176-176V128c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V32z"/></svg>
+
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="opt2"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M40 208c-22.1 0-40 17.9-40 40s17.9 40 40 40l180.2 0c-7.6 8.5-12.2 19.7-12.2 32c0 25.3 19.5 46 44.3 47.9c-7.7 8.5-12.3 19.8-12.3 32.1c0 26.5 21.5 48 48 48l32 0 64 0c70.7 0 128-57.3 128-128l0-113.1c0-40.2-16-78.8-44.4-107.3C444.8 76.8 413.9 64 381.7 64L336 64c-21.3 0-39.3 13.9-45.6 33.1l74.5 23.7c8.4 2.7 13.1 11.7 10.4 20.1s-11.7 13.1-20.1 10.4L288 129.9l0 .1L84 65.8C62.9 59.2 40.5 70.9 33.8 92s5.1 43.5 26.2 50.2L269.5 208 40 208z"/></svg>
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="opt3"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M144 0C117.5 0 96 21.5 96 48V96v28.5V176c0 8.8-7.2 16-16 16s-16-7.2-16-16V149.3l-9 7.5C40.4 169 32 187 32 206V244c0 38 16.9 74 46.1 98.3L128 384v96c0 17.7 14.3 32 32 32H320c17.7 0 32-14.3 32-32V374.7c46.9-19 80-65 80-118.7V176 160 144c0-26.5-21.5-48-48-48c-12.4 0-23.6 4.7-32.1 12.3C350 83.5 329.3 64 304 64c-12.4 0-23.6 4.7-32.1 12.3C270 51.5 249.3 32 224 32c-12.4 0-23.6 4.7-32.1 12.3C190 19.5 169.3 0 144 0z"/></svg>
+        </div>
+
+        <span id="result">  </span>
+        <div class="resultPic">
+             <div class="myPic">
+                                        
+                                    </div>
+            <div class="pic">
+                afa
+                        </div>
+        </div>
+
+        <div class="versus">
+  <img src="vs-41932.png" alt="">
+        </div>
+       
+    </div>
+  
+
+ 
+    <script>
+
+        // getting elements to target 
+        let op1 = document.querySelector('#opt1') ; 
+        let op2 = document.querySelector('#opt2') ; 
+        let op3 = document.querySelector('#opt3') ; 
+         let myPic = document.querySelector('.myPic') ; 
+        let versus = document.querySelector('.versus') ; 
+        let container = document.querySelector('.container') ; 
+        let result = document.querySelector('#result') ; 
+ let pic = document.querySelector('.pic') ;
+
+        result.addEventListener('click' , function () {
+            result.innerHTML = '' ; 
+            myPic.innerHTML = '' ; 
+            pic.innerHTML= '' ; 
+        })
+     
+
+        // for delaying on page load 
+         
+        setTimeout(() => {
+            op1.classList.add('active_animation') ;
+           
+        }, 0o0);
+
+        // for making the element visible after timeout  
+        op1.style.opacity = `1` ; 
+   
+
+      
+        setTimeout(() => {
+            op2.classList.add('active_animation') ;
+         }, 1000);
+
+                // for making the element visible after timeout  
+
+        op2.style.opacity = `1` ; 
+      
+
+        setTimeout(() => {
+            op3.classList.add('active_animation') ;
+        }, 2000);
+
+                // for making the element visible after timeout  
+                let arr = ['p' ,'s' ,'r' ] ; 
+
+        op3.style.opacity = `1` ; 
+        
+
+
+        op1.addEventListener('click' ,   function  ( ) {
+            let input = 'p' ;
+            let counter = Math.floor(Math.random() * 3 )   ; 
+            let value = arr[counter] ; 
+            let icon ;
+            if( value === 'p')
+           icon = `  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="opt1"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V336c0 1.5 0 3.1 .1 4.6L67.6 283c-16-15.2-41.3-14.6-56.6 1.4s-14.6 41.3 1.4 56.6L124.8 448c43.1 41.1 100.4 64 160 64H304c97.2 0 176-78.8 176-176V128c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V32z"/></svg> `;
+ 
+        else if ( value === 'r')
+        icon = ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="opt3"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M144 0C117.5 0 96 21.5 96 48V96v28.5V176c0 8.8-7.2 16-16 16s-16-7.2-16-16V149.3l-9 7.5C40.4 169 32 187 32 206V244c0 38 16.9 74 46.1 98.3L128 384v96c0 17.7 14.3 32 32 32H320c17.7 0 32-14.3 32-32V374.7c46.9-19 80-65 80-118.7V176 160 144c0-26.5-21.5-48-48-48c-12.4 0-23.6 4.7-32.1 12.3C350 83.5 329.3 64 304 64c-12.4 0-23.6 4.7-32.1 12.3C270 51.5 249.3 32 224 32c-12.4 0-23.6 4.7-32.1 12.3C190 19.5 169.3 0 144 0z"/></svg>` ;
+    else 
+    icon = ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="opt2"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M40 208c-22.1 0-40 17.9-40 40s17.9 40 40 40l180.2 0c-7.6 8.5-12.2 19.7-12.2 32c0 25.3 19.5 46 44.3 47.9c-7.7 8.5-12.3 19.8-12.3 32.1c0 26.5 21.5 48 48 48l32 0 64 0c70.7 0 128-57.3 128-128l0-113.1c0-40.2-16-78.8-44.4-107.3C444.8 76.8 413.9 64 381.7 64L336 64c-21.3 0-39.3 13.9-45.6 33.1l74.5 23.7c8.4 2.7 13.1 11.7 10.4 20.1s-11.7 13.1-20.1 10.4L288 129.9l0 .1L84 65.8C62.9 59.2 40.5 70.9 33.8 92s5.1 43.5 26.2 50.2L269.5 208 40 208z"/></svg>` ; 
+ ; 
+      
+
+//  showing my input as pic 
+myPic.innerHTML = `${ `  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="opt1"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V336c0 1.5 0 3.1 .1 4.6L67.6 283c-16-15.2-41.3-14.6-56.6 1.4s-14.6 41.3 1.4 56.6L124.8 448c43.1 41.1 100.4 64 160 64H304c97.2 0 176-78.8 176-176V128c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V32z"/></svg> `}` ;
+
+//  delaying for showing the icon 
+setTimeout(() => {
+    pic.innerHTML = `${icon}` ;
+}, 2000);
+           
+
+
+           if ( input === 'p') {
+            if ( value === 'p')
+            result.innerHTML = 'Tie' ; 
+           
+            else if ( value === 'r')
+            result.innerHTML = 'you win' ; 
+
+            else 
+            result.innerHTML ='you loose' ; 
+           }
+
+           
+          else  if ( input === 'r') {
+            if ( value === 'r')
+            result.innerHTML = 'Tie' ; 
+           
+            else if ( value === 's')
+            result.innerHTML = 'you win' ; 
+
+            else 
+            result.innerHTML ='you loose' ; 
+           }
+
+           
+
+           
+          else  if ( input === 's') {
+            if ( value === 's')
+            result.innerHTML = 'Tie' ; 
+           
+            else if ( value === 'p')
+            result.innerHTML = 'you win' ; 
+
+            else 
+            result.innerHTML ='you loose' ; 
+           }
+  
+             
+    //   for versus 
+
+    setTimeout(() => {
+  versus.style.zIndex = `1` ;
+}, 3000);
+
+// removing versus div
+    setTimeout(() => {
+  versus.style.zIndex = `-1` ;
+}, 4000);
+
+//  delay for result 
+
+setTimeout(() => {
+result.style.visibility = 'visible' ; 
+}, 5000);
+
+ 
+
+
+   
+           
+        }
+      ) ; 
+         
+        op3.addEventListener('click' ,   function  ( ) {
+            let input = 'r' ;
+            let counter = Math.floor(Math.random() * 3 )   ; 
+            let value = arr[counter] ; 
+            let icon ;
+            if( value === 'p')
+           icon = `  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="opt1"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V336c0 1.5 0 3.1 .1 4.6L67.6 283c-16-15.2-41.3-14.6-56.6 1.4s-14.6 41.3 1.4 56.6L124.8 448c43.1 41.1 100.4 64 160 64H304c97.2 0 176-78.8 176-176V128c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V32z"/></svg> `;
+ 
+        else if ( value === 'r')
+        icon = ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="opt3"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M144 0C117.5 0 96 21.5 96 48V96v28.5V176c0 8.8-7.2 16-16 16s-16-7.2-16-16V149.3l-9 7.5C40.4 169 32 187 32 206V244c0 38 16.9 74 46.1 98.3L128 384v96c0 17.7 14.3 32 32 32H320c17.7 0 32-14.3 32-32V374.7c46.9-19 80-65 80-118.7V176 160 144c0-26.5-21.5-48-48-48c-12.4 0-23.6 4.7-32.1 12.3C350 83.5 329.3 64 304 64c-12.4 0-23.6 4.7-32.1 12.3C270 51.5 249.3 32 224 32c-12.4 0-23.6 4.7-32.1 12.3C190 19.5 169.3 0 144 0z"/></svg>` ;
+    else 
+    icon = ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="opt2"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M40 208c-22.1 0-40 17.9-40 40s17.9 40 40 40l180.2 0c-7.6 8.5-12.2 19.7-12.2 32c0 25.3 19.5 46 44.3 47.9c-7.7 8.5-12.3 19.8-12.3 32.1c0 26.5 21.5 48 48 48l32 0 64 0c70.7 0 128-57.3 128-128l0-113.1c0-40.2-16-78.8-44.4-107.3C444.8 76.8 413.9 64 381.7 64L336 64c-21.3 0-39.3 13.9-45.6 33.1l74.5 23.7c8.4 2.7 13.1 11.7 10.4 20.1s-11.7 13.1-20.1 10.4L288 129.9l0 .1L84 65.8C62.9 59.2 40.5 70.9 33.8 92s5.1 43.5 26.2 50.2L269.5 208 40 208z"/></svg>` ; 
+ ; 
+      myPic.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="opt3"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M144 0C117.5 0 96 21.5 96 48V96v28.5V176c0 8.8-7.2 16-16 16s-16-7.2-16-16V149.3l-9 7.5C40.4 169 32 187 32 206V244c0 38 16.9 74 46.1 98.3L128 384v96c0 17.7 14.3 32 32 32H320c17.7 0 32-14.3 32-32V374.7c46.9-19 80-65 80-118.7V176 160 144c0-26.5-21.5-48-48-48c-12.4 0-23.6 4.7-32.1 12.3C350 83.5 329.3 64 304 64c-12.4 0-23.6 4.7-32.1 12.3C270 51.5 249.3 32 224 32c-12.4 0-23.6 4.7-32.1 12.3C190 19.5 169.3 0 144 0z"/></svg>` ; 
+//  delaying for showing the icon 
+setTimeout(() => {
+    pic.innerHTML = `${icon}` ;
+}, 2000);
+   
+           if ( input === 'p') {
+            if ( value === 'p')
+            result.innerHTML = 'Tie' ; 
+           
+            else if ( value === 'r')
+            result.innerHTML = 'you win' ; 
+
+            else 
+            result.innerHTML ='you loose' ; 
+           }
+
+           
+          else  if ( input === 'r') {
+            if ( value === 'r')
+            result.innerHTML = 'Tie' ; 
+           
+            else if ( value === 's')
+            result.innerHTML = 'you win' ; 
+
+            else 
+            result.innerHTML ='you loose' ; 
+           }
+
+           
+
+           
+          else  if ( input === 's') {
+            if ( value === 's')
+            result.innerHTML = 'Tie' ; 
+           
+            else if ( value === 'p')
+            result.innerHTML = 'you win' ; 
+
+            else 
+            result.innerHTML ='you loose' ; 
+           }
+          
+    //   for versus 
+
+    setTimeout(() => {
+  versus.style.zIndex = `1` ;
+}, 3000);
+
+// removing versus div
+    setTimeout(() => {
+  versus.style.zIndex = `-1` ;
+}, 4000);
+
+//  delay for result 
+
+setTimeout(() => {
+result.style.visibility = 'visible' ; 
+}, 5000);
+
+
+
+           
+        }
+      ) ; 
+         
+        op2.addEventListener('click' ,   function  ( ) {
+            let input = 's' ;
+            let counter = Math.floor(Math.random() * 3 )   ; 
+            let value = arr[counter] ; 
+            let icon ;
+            if( value === 'p')
+           icon = `  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="opt1"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V336c0 1.5 0 3.1 .1 4.6L67.6 283c-16-15.2-41.3-14.6-56.6 1.4s-14.6 41.3 1.4 56.6L124.8 448c43.1 41.1 100.4 64 160 64H304c97.2 0 176-78.8 176-176V128c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V32z"/></svg> `;
+ 
+        else if ( value === 'r')
+        icon = ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="opt3"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M144 0C117.5 0 96 21.5 96 48V96v28.5V176c0 8.8-7.2 16-16 16s-16-7.2-16-16V149.3l-9 7.5C40.4 169 32 187 32 206V244c0 38 16.9 74 46.1 98.3L128 384v96c0 17.7 14.3 32 32 32H320c17.7 0 32-14.3 32-32V374.7c46.9-19 80-65 80-118.7V176 160 144c0-26.5-21.5-48-48-48c-12.4 0-23.6 4.7-32.1 12.3C350 83.5 329.3 64 304 64c-12.4 0-23.6 4.7-32.1 12.3C270 51.5 249.3 32 224 32c-12.4 0-23.6 4.7-32.1 12.3C190 19.5 169.3 0 144 0z"/></svg>` ;
+    else 
+    icon = ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="opt2"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M40 208c-22.1 0-40 17.9-40 40s17.9 40 40 40l180.2 0c-7.6 8.5-12.2 19.7-12.2 32c0 25.3 19.5 46 44.3 47.9c-7.7 8.5-12.3 19.8-12.3 32.1c0 26.5 21.5 48 48 48l32 0 64 0c70.7 0 128-57.3 128-128l0-113.1c0-40.2-16-78.8-44.4-107.3C444.8 76.8 413.9 64 381.7 64L336 64c-21.3 0-39.3 13.9-45.6 33.1l74.5 23.7c8.4 2.7 13.1 11.7 10.4 20.1s-11.7 13.1-20.1 10.4L288 129.9l0 .1L84 65.8C62.9 59.2 40.5 70.9 33.8 92s5.1 43.5 26.2 50.2L269.5 208 40 208z"/></svg>` ; 
+ ; 
+      
+
+
+            pic.innerHTML = `${icon}` ; 
+           if ( input === 'p') {
+            if ( value === 'p')
+            result.innerHTML = 'Tie' ; 
+           
+            else if ( value === 'r')
+            result.innerHTML = 'you win' ; 
+
+            else 
+            result.innerHTML ='you loose' ; 
+           }
+
+           
+          else  if ( input === 'r') {
+            if ( value === 'r')
+            result.innerHTML = 'Tie' ; 
+           
+            else if ( value === 's')
+            result.innerHTML = 'you win' ; 
+
+            else 
+            result.innerHTML ='you loose' ; 
+           }
+
+           
+
+           
+          else  if ( input === 's') {
+            if ( value === 's')
+            result.innerHTML = 'Tie' ; 
+           
+            else if ( value === 'p')
+            result.innerHTML = 'you win' ; 
+
+            else 
+            result.innerHTML ='you loose' ; 
+           }
+
+           
+        }
+      ) ; 
+         
+
+    </script>
+</body>
+</html>

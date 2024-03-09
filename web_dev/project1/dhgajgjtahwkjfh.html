@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+         }
+
+        .container{
+            width: 100%;
+            height: 100vh;
+            background-color: #FF3CAC;
+background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+           ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5 ease-in-out;
+
+        }
+
+        .card{
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            position: relative;
+         }
+        .window{
+            width: 50%;
+            height: 60%;
+            border-radius: 20px;
+            border: 2px solid white;
+        }
+        .sb{
+            position: absolute;
+            width: 8rem;
+            height: 8rem;
+            border: 2px solid white ;
+            border-radius: 20px;
+        }
+
+        .subCards1{
+            background-image: url(images.jpg);
+            left: 25rem;
+            top: 4rem;
+            background-size: cover;
+        }
+        .subCards2{
+             left: 40%;
+            top: 13rem;
+            background-size: cover;
+         }
+         .subCards2 img{
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             border-radius: 20px;
+         }
+        .subCards3{
+            background-image: url(thor.jpg);
+            background-size: cover;
+            right: 25rem;
+            top:4rem;
+        }
+        .one{
+            position: absolute;
+            background: rgb(3, 3, 3);
+            width :100%;
+            height: 100%;
+            visibility: hidden;
+            border-radius: 20px;
+            
+           
+          }
+
+        
+
+         .sub2{
+            background: red;
+         }
+         .sub3{
+            background: rgb(5, 5, 53);
+         }
+
+         .lf1 p , .lf1 h1{
+            color: white;
+            /* box-shadow:  0 0 30px rgb(42, 181, 42); */
+            filter: drop-shadow(0 0 0.75rem  rgb(249, 230, 16));
+            text-align: center;
+         }
+
+         .lf2 p , .lf2 h1{
+            color: white;
+            /* box-shadow:  0 0 30px rgb(42, 181, 42); */
+            filter: drop-shadow(0 0 0.75rem  rgb(42, 181, 42));
+            text-align: center;
+         }
+
+         .lf3 p , .lf3 h1{
+            color: white;
+            /* box-shadow:  0 0 30px rgb(42, 181, 42); */
+            filter: drop-shadow(0 0 0.75rem  rgb(46, 175, 230));
+            text-align: center;
+         }
+         button{
+            border: none;
+            background: none;
+         }
+         .cross{
+            position: absolute;
+            right: 0;
+            margin: 1rem;
+            z-index: 2;
+         }
+         .left_half{
+            margin: 3rem;
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+          }
+          .main img {
+            margin: 3rem;
+            width: 202px;
+            height: 250px;
+           box-shadow:  0 0 30px rgb(42, 181, 42);
+          }
+         .main{
+            position: absolute;
+
+            display: flex;
+
+         }
+
+
+         .cross span{
+            color: white;
+         }
+         .sb , button{
+            cursor: pointer;
+         
+         }
+         .content {
+    background-color: #ff3caa71;
+    background-image: linear-gradient(225deg, #ff3caa5e 0%, rgba(120, 75, 160, 0.452) 50%, #2b85c572 100%);
+}
+
+ 
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="window">
+            <div class="card">
+                <div class="subCards1 sb"></div>
+                <div class="subCards2 sb" ><img src="tom and jerry.jpg" alt=""></div>
+                <div class="subCards3 sb" ></div>
+                <div class="one sub1">
+                    <button onclick="remove()" class="cross"> <span class="material-symbols-outlined">
+                        close
+                        </span> </button>
+                <div class="main">
+                    <div class="left_half lf1">
+                    <h1>Ben 10</h1>
+                    <br>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod quae dicta autem ipsum!</p>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                    </div>
+
+                    <img src="images.jpg" alt="">
+                </div>
+                   </div>
+                <div class="one sub2">
+                    <button onclick="remove()" class="cross"> <span class="material-symbols-outlined">
+                        close
+                        </span> </button>
+                <div class="main">
+                    <div class="left_half  lf2">
+                    <h1>Tom and Jerry </h1>
+                    <br>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod quae dicta autem ipsum!</p>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                    </div>
+
+                    <img src="tom and jerry.jpg" alt="">
+                </div>
+                   </div>
+                <div class="one sub3">
+                    <button onclick="remove()" class="cross"> <span class="material-symbols-outlined">
+                        close
+                        </span> </button>
+                <div class="main">
+                    <div class="left_half  lf3">
+                    <h1>Thor</h1>
+                    <br>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod quae dicta autem ipsum!</p>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                    </div>
+
+                    <img src="thor.jpg" alt="">
+                </div>
+                   </div>
+               </div>
+
+       
+        </div>
+
+
+     
+    </div>
+
+    <script>
+
+        // targeting the div that to  be addded
+        let sub1 = document.querySelector('.sub1') ; 
+        let ben = document.querySelector('.subCards1') ; 
+           // targeting the div that to  be addded
+        let sub2 = document.querySelector('.sub2') ; 
+        let tom= document.querySelector('.subCards2') ; 
+           // targeting the div that to  be addded
+        let sub3 = document.querySelector('.sub3') ; 
+        let thor = document.querySelector('.subCards3') ; 
+        // ben.addEventListener('click', add1) ;
+        // tom.addEventListener('click', add2) ;
+        // thor.addEventListener('click', add3) ;
+      
+        ben.addEventListener('click', function() { add(sub1); });
+    tom.addEventListener('click', function() { add(sub2); });
+    thor.addEventListener('click', function() { add(sub3); });
+         let container = document.querySelector('.container') ;
+
+
+function add(div) {
+    div.style.visibility = 'visible'  ;
+             container.classList.add('content') ; 
+
+}
+
+        
+        // function add1() {
+             
+        //     sub1.style.visibility = 'visible'  ;
+        //     container.classList.add('content') ; 
+        //  }
+        
+        // function add2() {
+        //     sub2.style.visibility = 'visible'  ; container.classList.add('content') ; 
+        //  }
+        
+        // function add3() {
+        //     sub3.style.visibility = 'visible'  ; container.classList.add('content') ; 
+        //  }
+
+        function remove () {
+            container.classList.remove('content') ; 
+            sub1.style.visibility = 'hidden' ;
+            sub2.style.visibility = 'hidden' ;
+            sub3.style.visibility = 'hidden' ;
+        }
+    </script>
+</body>
+</html>

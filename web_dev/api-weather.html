@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Jai shri ram
+    <script>
+       console.log('Hello Jee babbar');
+
+const API_KEY = "d1845658f92b31c64bd94f06f7188c9c";
+
+
+async function fetchWeatherDetails() {
+
+try {
+    let city = "goa";
+
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+    const data = await response.json();
+
+    console.log("Weather data:-> " , data);
+
+    renderWeatherInfo(data);
+}
+catch(err) {
+    //handle the error here
+}
+//https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric
+
+}
+
+    </script> 
+</body>
+</html>

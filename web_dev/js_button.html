@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    .container
+{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(117, 231, 231);
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}
+button{
+    width: 15rem;
+    height: 7rem;
+    border: none;
+    background-color: rgb(201, 51, 51);
+    font-size: 2rem;
+    position: relative;
+}
+button span{
+    margin: 3px;
+    position: absolute;
+    animation-name: move-left;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    
+}
+
+@keyframes move-left {
+    0%{
+        top: 50%;
+        left: 0;
+        transform: scaleY(1);
+    }
+    50%{
+        transform: scaleY(0.8);
+
+    }
+    100%{
+        top: 50%;
+        left: 86%;
+        transform: scaleY(1);
+
+    }
+}
+ 
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="start()" id="btn">
+           Click Here
+        </button>
+    </div>
+    <script>
+        let btn = document.querySelector('#btn') ; 
+        function start() {
+            btn.innerHTML = '' ; 
+            let box = document.createElement('span') ; 
+            box.style.backgroundColor= 'blue' ; 
+            box.style.width= '30px' ;
+            box.style.height = '30px' ; 
+            btn.appendChild(box) ; 
+            setTimeout(() => {
+                box.remove() ; 
+            btn.innerHTML = 'Done' ;
+            }, 2000);
+             
+            setTimeout(() => {
+             btn.innerHTML = 'Click here' ;
+            }, 3000);
+             
+        }
+    </script>
+</body>
+</html>

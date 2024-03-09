@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div class="demo">
+
+    </div>
+
+
+<script>
+    //    already declared as resolved or rejected  ;;
+    let a = new Promise(function (resolve , reject) {
+        setTimeout( function ()
+        {
+            console.log("hi i am here :") ; 
+
+        }    , 2000 );
+        //  resolve(2233)  ;
+        reject( new Error("Bhai error aaye hai") );
+    }) ;
+
+    
+    // leave on the system to identify to reject or resolve 
+
+    let another = new Promise(function(resolve, reject) {
+    setTimeout(function() {
+        console.log("hi i am  not here :");
+        resolve(2233);
+    }, 2000);
+    //  resolve(2233)  ;
+    // reject( new Error("Bhai error aaye hai") );
+});
+
+another.then(
+    (value) => { console.log("all clear") },
+    (error) => { console.log("received an error") }
+);
+
+let temp = new Promise(function(resolve, reject) {
+    setTimeout(function() {
+        console.log("hello");    }, 2000);
+});
+
+temp.then(
+    (value) => { console.log("all clear") },
+    (error) => { console.log("received an error") }
+);
+
+
+   
+    //  a.then( (value)   => {console.log(value)}) ;
+     
+     
+     //  another way 
+     
+     //  a.then(function (value) {
+         //     console.log(value ); 
+         //  });
+         
+        //  a.catch((error) => {  console.log("received an error")}) ; 
+
+//   inshort way 
+
+a.then(
+    (value) => {console.log("all clear")} , 
+    (error) =>{ console.log("received an error")} 
+) ; 
+
+
+
+//     console.log("everything was fine ") ;
+
+
+//   let b = new Promise(function(resolve , reject ) {
+//         setTimeout(() => {
+//             console.log("set time out 1") ; 
+//         }, 3000 );
+//         resolve(true) ; 
+//   }) ; 
+
+//   let output =  b.then((value) =>  {
+//     let c = new Promise(function(resolve , reject) {
+//         setTimeout( ( )=> {
+//             console.log('settimeout2') ;
+//         } , 6000) ; 
+
+//         resolve('c is resolved');
+//     })
+//     return c;
+       
+//   })
+
+//   output.then((value) =>console.log(value)) ; 
+ 
+
+
+// async function always returns as a promise ; ;;
+
+async function   afunc() {
+    return 10;
+}
+
+afunc() ;
+ 
+
+
+setInterval(myTimer, 1000);
+
+function myTimer() {
+    const d = new Date();
+    document.querySelector(".demo").innerHTML = d.toLocaleTimeString();
+}
+
+
+
+
+
+</script>
+</body>
+
+</html>

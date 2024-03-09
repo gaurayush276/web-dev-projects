@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 100%;
+            height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+        }
+
+          
+        
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="screen">
+
+        </div>
+      
+        <button onclick="getPassword()">
+        Get Password</button>
+    </div>
+
+    <script>
+        let screen = document.querySelector('.screen')  ;
+        let password = '';
+       document.querySelector('.check').innerHTML  = a ;
+function RandomNumber(min, max) {
+    return Math.floor(Math.random() * (max- min ) ) +min ; 
+}
+
+      function  getPassword() {
+            password = password + RandomNumber(0,9) ; 
+            password = password + String.fromCharCode(RandomNumber(65,90)) ; 
+            password = password + String.fromCharCode(RandomNumber(97,122));
+            screen.innerHTML = password;
+      }
+        
+       
+    </script>
+</body>
+</html>

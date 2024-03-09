@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color Flipper</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container{
+            width: 100%;
+            height: 100vh;
+            background-color: white; 
+            display: flex; 
+            justify-content: center; 
+            align-items :center; 
+
+
+        }
+        span{
+            font-size: 2rem;
+        }
+
+        .box{
+            text-align: center;
+        }
+        button{
+            width: 7rem;
+            height: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Background Color  :  </h1>
+            <br>
+            <span id="color">FGSDgg</span>
+            <br>
+            <br>
+            <button onclick="change()">click Me</button>
+        </div>
+    </div>
+    <script>
+        let container = document.querySelector('.container') ;
+        let color =document.querySelector("#color") ; 
+
+        let arr = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'] ; 
+        let n = arr.length -1 ; 
+
+        function change() {
+            let hex = '#' ; 
+            for ( let i = 0 ;i<6;i++ ) {
+                hex += arr[randomNumber()] ; 
+            }
+            color.innerHTML   = hex ; 
+            container.style.backgroundColor = hex ; 
+        }
+
+        function randomNumber() {
+            return Math.floor(Math.random() * n ) ; 
+        }
+
+    </script>
+</body>
+</html>

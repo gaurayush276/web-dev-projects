@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+     <div class="container">
+        <div class="box">
+            <h1 style="text-align: center;"> Calculator </h1> 
+            <div class="values">
+                <input type="text" id="first_val">
+                <label for="first_val"> Enter First value</label>
+                <br>
+                <br>
+                <input type="text" id="second_val">
+                <label for="second_val"> Enter second value</label>
+    
+            </div>
+           
+             <div class="buttons">
+                <button onclick="add()" class="btn"> + </button>
+                <button onclick="sub()" class="btn"> - </button>
+                <button onclick="mul()" class="btn"> * </button>
+                <button onclick="div()" class="btn"> / </button>
+             </div>
+             
+            <div class="ans" id="result">
+
+            </div>
+
+        </div>
+     </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

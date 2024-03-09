@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container{
+            width: 100%;
+            height: 100vh;
+            background: peachpuff;
+            
+        }
+
+        .div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            transition:all  1s ease ;
+        }
+        .div1{
+            margin-top: 2rem;
+            width: 100px;
+            height: 100px;
+            background: rgb(0, 4, 255);
+            transition:all  1s ease ;
+        }
+        .active {
+            transform: translateX(10rem);
+            opacity: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <div class="container">
+        <button onclick="start()">
+            Start transition
+        </button>
+        <button onclick="another()">
+            Start transition
+        </button>
+        <div class="div">
+            
+        </div>
+        <div class="bg-red-800   font-bold text-center">
+            wjhtsabf bdgfabsdfbsab aj i shri ram 
+
+            
+        </div>
+    </div>
+
+
+    <script>
+        let div = document.querySelector('.div') ; 
+        let div1 = document.querySelector('.div1') ; 
+
+        function start() {
+                div.style.transform = `translateX(10rem)` ;
+                div.style.opacity = `0` ;
+
+                setTimeout(() => {
+            div.style.transform = `translateX(0rem)` ;
+            div.style.opacity = `1` ;
+        }, 2000);
+        }
+
+        function another () {
+            div1.classList.add('active') ; 
+
+            setTimeout(() => {
+                div1.classList.remove('active') ;  
+            }, 2000);
+        }
+
+       
+    </script>
+</body>
+</html>
