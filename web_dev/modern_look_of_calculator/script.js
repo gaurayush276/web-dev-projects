@@ -78,33 +78,43 @@ function num_sub(){
                
           
     }
-    function Solution(expression) {
-        let operands = expression.split(/[\+\-\*\/]/);
-        let operators = expression.split(/[0-9\.]+/).filter(Boolean);
+    function Solution(s) {
+        let stack = [];
+        let sign = '+';
+        let temp = 0;
+        
+        for (let i = 0; i < s.length; i++) {
+            if (s[i].match(/\d/)) { // Checks if the character is a digit
+                temp = temp * 10 + (s[i] - '0');
+            }
     
-        let result = parseFloat(operands[0]);
+            if ((!s[i].match(/\d/) && s[i] !== ' ') || i === s.length - 1) {
+                if (sign === '+') {
+                    stack.push(temp);
+                } else if (sign === '-') {
+                    stack.push(-temp);
+                } else {
+                    let result;
+                    if (sign === '*') {
+                        result = stack.pop() * temp;
+                    } else {
+                        result = stack.pop() / temp;
+                    }
+                    stack.push(result);
+                }
     
-        for (let i = 0; i < operators.length; i++) {
-            let operator = operators[i];
-            let operand = parseFloat(operands[i + 1]);
-    
-            switch (operator) {
-                case '+':
-                    result += operand;
-                    break;
-                case '-':
-                    result -= operand;
-                    break;
-                case '*':
-                    result *= operand;
-                    break;
-                case '/':
-                    result /= operand;
-                    break;
+                temp = 0;
+                sign = s[i];
             }
         }
     
-        return result;
+        let sum = 0;
+        while (stack.length > 0) {
+            sum += stack.pop();
+        }
+    
+        return sum;
+    
     }
     
     
